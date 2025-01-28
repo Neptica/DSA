@@ -215,7 +215,7 @@ function Tree() {
 
   function height(node) {
     if (!node) {
-      return 0;
+      return -1;
     }
     return 1 + Math.max(height(node.left), height(node.right));
   }
@@ -226,7 +226,7 @@ function Tree() {
     while (deque.length > 0) {
       let newDeque = [];
       for (const el of deque) {
-        console.log(el);
+        // console.log(el);
         if (el === node) {
           return depth;
         }
@@ -331,6 +331,7 @@ function Tree() {
   return {
     getRoot,
     buildTree,
+    insert,
     deleteItem,
     find,
     levelOrder,
@@ -361,8 +362,8 @@ let root = bst.buildTree([
 //   1, 6, 4, 23, 8, 7, 9, 4, 3, 5, 7, 9, 67, 6345, 324, 320, 330, 8.5, 10,
 // ]);
 //
-// bst.deleteItem(7);
-// bst.deleteItem(6345);
+bst.deleteItem(7);
+bst.deleteItem(6345);
 // console.log(bst.isBalanced(root));
 //
 // console.log(bst.find(7));
@@ -374,8 +375,20 @@ console.log("\n\n\n\n\n\n\n");
 // bst.postOrder(console.log, root);
 // bst.preOrder(console.log, root);
 
+prettyPrint(bst.getRoot());
+// console.log("\n");
+bst.insert(ListNode(234));
+bst.insert(ListNode(48738));
+bst.insert(ListNode(2234));
+bst.insert(ListNode(24));
+bst.insert(ListNode(14));
+prettyPrint(bst.getRoot());
+//
+// console.log(bst.find(24));
+// console.log(bst.find(2234));
+// console.log(bst.find(324));
+
+console.log(bst.height(bst.find(24)));
+console.log(bst.depth(bst.find(2234)));
+
 // console.log(bst.depth(bst.find(324)));
-
-bst.rebalance(root);
-
-// TODO: Implement a rebalance method for the tree
